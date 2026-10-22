@@ -1,0 +1,316 @@
+/* Рефрижератор, вид сверху. Изолированный бесшовный цикл.
+   Чтобы перенастроить:
+   --reefer-duration  длина цикла (4–6s). 0% и 100% совпадают.
+   --split-a / --split-b  доля холодной зоны в начале и в середине.
+   Цвета совпадают со светлой палитрой сайта: синий и красный логотипа на белой сцене. */
+
+@property --split {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.46;
+}
+
+.reefer {
+  --reefer-blue: #18519a;
+  --reefer-ice: #d7e6f8;
+  --reefer-hot: #d1263a;
+  --reefer-metal: #6d86a6;
+  --reefer-paper: #ffffff;
+  --reefer-ink: #172033;
+  --reefer-duration: 5s;
+  --split-a: 0.46;
+  --split-b: 0.64;
+  --split: var(--split-a);
+
+  margin: 0;
+  contain: layout style;
+}
+
+.reefer__stage {
+  position: relative;
+  aspect-ratio: 760 / 320;
+  border-radius: 22px;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  background:
+    radial-gradient(420px 180px at 28% 50%, rgba(61, 125, 206, 0.2), transparent 70%),
+    radial-gradient(380px 180px at 76% 50%, rgba(209, 38, 58, 0.12), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #eef3fa 100%);
+  box-shadow: 0 16px 40px rgba(16, 18, 28, 0.08);
+  overflow: hidden;
+}
+
+/* Грузовой отсек совпадает с внутренним контуром в SVG (188,90 500×148 при 760×320). */
+.reefer__bay {
+  position: absolute;
+  left: 24.737%;
+  top: 28.125%;
+  width: 65.789%;
+  height: 46.25%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.reefer__zone {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(1);
+  will-change: transform;
+}
+
+/* Холод: синий логотипа, без тёмной подложки. */
+.reefer__zone--cold {
+  transform-origin: left center;
+  transform: scaleX(0.46);
+  animation: reefer-cold var(--reefer-duration) ease-in-out infinite;
+  background:
+    linear-gradient(90deg, rgba(24, 81, 154, 0.34) 0%, rgba(61, 125, 206, 0.2) 62%, rgba(215, 230, 248, 0) 100%);
+  box-shadow: inset 18px 0 28px rgba(24, 81, 154, 0.08);
+}
+
+/* Тепло: красный логотипа. */
+.reefer__zone--warm {
+  transform-origin: right center;
+  transform: scaleX(0.54);
+  animation: reefer-warm var(--reefer-duration) ease-in-out infinite;
+  background:
+    linear-gradient(270deg, rgba(209, 38, 58, 0.3) 0%, rgba(229, 27, 31, 0.14) 64%, rgba(248, 220, 224, 0) 100%);
+  box-shadow: inset -18px 0 28px rgba(209, 38, 58, 0.08);
+}
+
+/* Правый край этого слоя — линия перегородки. Сдвиг только transform, в долях ширины отсека. */
+.reefer__mover {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(-54%, 0, 0);
+  animation: reefer-move var(--reefer-duration) ease-in-out infinite;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.reefer__wall {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  transform: translateX(50%);
+  border-radius: 5px;
+  background:
+    repeating-linear-gradient(180deg, #ffffff 0 2px, transparent 2px 7px),
+    var(--reefer-blue);
+  box-shadow:
+    -8px 0 16px rgba(24, 81, 154, 0.16),
+    8px 0 16px rgba(209, 38, 58, 0.14);
+}
+
+.reefer__badge {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 4px 9px 4px 7px;
+  border: 1px solid rgba(23, 32, 51, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--reefer-ink);
+  box-shadow: 0 6px 16px rgba(23, 32, 51, 0.08);
+  font-size: clamp(11px, 1.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transform: translate(-50%, -50%);
+  animation: reefer-monitor var(--reefer-duration) ease-in-out infinite;
+}
+
+.reefer__badge svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reefer__badge--cold {
+  left: 24%;
+  color: var(--reefer-blue);
+  border-color: rgba(24, 81, 154, 0.28);
+}
+
+.reefer__badge--warm {
+  left: 76%;
+  color: var(--reefer-hot);
+  border-color: rgba(209, 38, 58, 0.28);
+}
+
+.reefer__sensor {
+  position: absolute;
+  z-index: 2;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85);
+}
+
+.reefer__sensor::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  animation: reefer-ping var(--reefer-duration) ease-in-out infinite;
+}
+
+.reefer__sensor--cold {
+  left: 8%;
+  bottom: 8px;
+  color: var(--reefer-blue);
+}
+
+.reefer__sensor--warm {
+  right: 7%;
+  top: 8px;
+  color: var(--reefer-hot);
+}
+
+.reefer__sensor--warm::after {
+  animation-delay: calc(var(--reefer-duration) * -0.35);
+}
+
+.reefer__outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.reefer__outline .metal {
+  fill: none;
+  stroke: var(--reefer-metal);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reefer__outline .paper {
+  fill: none;
+  stroke: rgba(24, 81, 154, 0.35);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+}
+
+.reefer__outline .cab {
+  fill: #e4eef8;
+  stroke: none;
+}
+
+.reefer__icon {
+  position: absolute;
+  width: clamp(22px, 3.4vw, 32px);
+  height: clamp(22px, 3.4vw, 32px);
+  fill: none;
+  stroke: var(--reefer-blue);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+  will-change: transform;
+  animation: reefer-float var(--reefer-duration) ease-in-out infinite;
+}
+
+.reefer__icon--pill { left: 4%; top: 10%; stroke: var(--reefer-blue); }
+.reefer__icon--shield { right: 5%; top: 12%; animation-delay: calc(var(--reefer-duration) * -0.2); stroke: var(--reefer-ink); }
+.reefer__icon--vial { left: 6%; bottom: 10%; animation-name: reefer-float-alt; animation-delay: calc(var(--reefer-duration) * -0.45); }
+.reefer__icon--pulse { right: 6%; bottom: 12%; animation-name: reefer-float-alt; stroke: var(--reefer-hot); animation-delay: calc(var(--reefer-duration) * -0.7); }
+
+.reefer figcaption {
+  margin-top: 12px;
+  max-width: 62ch;
+  color: var(--muted, #5c6a7d);
+  font-size: 14px;
+}
+
+/* Цикл перегородки. Только transform, 0% и 100% совпадают, ease-in-out. */
+@keyframes reefer-cold {
+  0%, 100% { transform: scaleX(0.46); }
+  50% { transform: scaleX(0.64); }
+}
+
+@keyframes reefer-warm {
+  0%, 100% { transform: scaleX(0.54); }
+  50% { transform: scaleX(0.36); }
+}
+
+@keyframes reefer-move {
+  0%, 100% { transform: translate3d(-54%, 0, 0); }
+  50% { transform: translate3d(-36%, 0, 0); }
+}
+
+.reefer.is-gated:not(.is-playing),
+.reefer.is-gated:not(.is-playing) .reefer__zone,
+.reefer.is-gated:not(.is-playing) .reefer__mover,
+.reefer.is-gated:not(.is-playing) .reefer__badge,
+.reefer.is-gated:not(.is-playing) .reefer__sensor::after,
+.reefer.is-gated:not(.is-playing) .reefer__icon {
+  animation-play-state: paused;
+}
+
+@keyframes reefer-monitor {
+  0%,
+  100% { opacity: 0.72; }
+  50% { opacity: 1; }
+}
+
+@keyframes reefer-ping {
+  0%,
+  100% { transform: scale(0.65); opacity: 0.15; }
+  50% { transform: scale(1.4); opacity: 0.9; }
+}
+
+@keyframes reefer-float {
+  0%,
+  100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(5px, -8px, 0); }
+}
+
+@keyframes reefer-float-alt {
+  0%,
+  100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-6px, 7px, 0); }
+}
+
+@media (max-width: 760px) {
+  .reefer__badge {
+    gap: 4px;
+    min-height: 22px;
+    padding: 2px 7px;
+    font-size: 11px;
+  }
+  .reefer__badge svg { width: 12px; height: 12px; }
+  .reefer__badge--cold { left: 22%; }
+  .reefer__badge--warm { left: 78%; }
+  .reefer__sensor::after { inset: -3px; }
+  .reefer__icon--pill,
+  .reefer__icon--vial { left: 2%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reefer,
+  .reefer__zone,
+  .reefer__mover,
+  .reefer__badge,
+  .reefer__sensor::after,
+  .reefer__icon {
+    animation: none;
+  }
+
+  .reefer { --split: 0.52; }
+  .reefer__zone--cold { transform: scaleX(0.52); }
+  .reefer__zone--warm { transform: scaleX(0.48); }
+  .reefer__mover { transform: translate3d(-48%, 0, 0); }
+}
