@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#07070b">
 <link rel="icon" href="assets/logo-word.png">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/reefer.css">
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
@@ -115,30 +116,48 @@
           <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Режимы</p>
           <h2 id="modes-title">Два квалифицированных режима в одном кузове</h2>
           <p class="lede">Собственные мультитемпературные рефрижераторы квалифицированы для +2…+8&nbsp;°C и +15…+25&nbsp;°C. Оба режима можно держать в одной машине. Для остальной номенклатуры доступен диапазон от +2&nbsp;°C до +25&nbsp;°C.</p>
-          <div class="mode-list" role="group" aria-label="Показать режим на схеме">
+          <div class="mode-list" role="group" aria-label="Температурный режим для заявки">
             <button class="chip" type="button" data-mode="2-8">+2…+8&nbsp;°C</button>
             <button class="chip" type="button" data-mode="15-25">+15…+25&nbsp;°C</button>
             <button class="chip" type="button" data-mode="dual">Оба режима</button>
             <button class="chip" type="button" data-mode="range">+2…+25&nbsp;°C</button>
           </div>
         </div>
-        <div class="chambers">
-          <div class="chambers-label">
-            <span>Кузов</span>
-            <span>Перегородка</span>
-          </div>
-          <div class="body-split">
-            <div class="chamber" data-chamber="2-8">
-              <strong>+2…+8</strong>
-              <span>Камера 1. Квалифицированный режим.</span>
+        <figure class="reefer">
+          <div class="reefer__stage" aria-hidden="true">
+            <div class="reefer__bay">
+              <div class="reefer__zone reefer__zone--cold"></div>
+              <div class="reefer__zone reefer__zone--warm"></div>
+              <div class="reefer__mover">
+                <div class="reefer__wall"></div>
+              </div>
+              <span class="reefer__sensor reefer__sensor--cold"></span>
+              <span class="reefer__sensor reefer__sensor--warm"></span>
+              <div class="reefer__badge reefer__badge--cold">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 3l-2.2 2.2M12 3l2.2 2.2M12 21l-2.2-2.2M12 21l2.2-2.2M5 7.2l14 9.6M5 7.2l1.2 2.6M5 7.2l2.8.2M19 16.8l-1.2-2.6M19 16.8l-2.8-.2M19 7.2 5 16.8M19 7.2l-1.2 2.6M19 7.2l-2.8.2M5 16.8l1.2-2.6M5 16.8l2.8-.2"/></svg>
+                <span>+5&nbsp;°C</span>
+              </div>
+              <div class="reefer__badge reefer__badge--warm">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.2V5.2a2 2 0 1 1 4 0v8a3.6 3.6 0 1 1-4 0z"/><path d="M12 8.2v5.2"/></svg>
+                <span>+20&nbsp;°C</span>
+              </div>
             </div>
-            <div class="chamber" data-chamber="15-25">
-              <strong>+15…+25</strong>
-              <span>Камера 2. Квалифицированный режим.</span>
-            </div>
+            <svg class="reefer__outline" viewBox="0 0 760 320">
+              <rect class="metal" x="176" y="78" width="524" height="172" rx="22"/>
+              <path class="cab" d="M188 114H74a20 20 0 0 0-20 20v52a20 20 0 0 0 20 20h114z"/>
+              <path class="metal" d="M188 114H74a20 20 0 0 0-20 20v52a20 20 0 0 0 20 20H188"/>
+              <rect class="paper" x="188" y="90" width="500" height="148" rx="14"/>
+              <path class="metal" d="M664 108v112"/>
+              <path class="paper" d="M78 142h70M78 158h46"/>
+            </svg>
+            <svg class="reefer__icon reefer__icon--pill" viewBox="0 0 24 24"><rect x="3.2" y="8.2" width="17.6" height="7.6" rx="3.8" transform="rotate(-40 12 12)"/><path d="M9.2 9.4 14.6 14.8"/></svg>
+            <svg class="reefer__icon reefer__icon--shield" viewBox="0 0 24 24"><path d="M12 3.2 19 6v6.2c0 4.2-2.8 7.2-7 8.6-4.2-1.4-7-4.4-7-8.6V6l7-2.8z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg>
+            <svg class="reefer__icon reefer__icon--vial" viewBox="0 0 24 24"><path d="M9 3.2h6M10 3.2V8L6.8 16.2A3.6 3.6 0 0 0 10.1 21h3.8a3.6 3.6 0 0 0 3.3-4.8L14 8V3.2"/><path d="M8.2 14.5h7.6"/></svg>
+            <svg class="reefer__icon reefer__icon--pulse" viewBox="0 0 24 24"><path d="M2.5 12h4l2-5 3.2 10 2.2-5H21.5"/><circle cx="12" cy="12" r="9.2"/></svg>
           </div>
+          <figcaption>Перегородка за пять секунд уходит и возвращается в ту же точку. +5&nbsp;°C и +20&nbsp;°C — пример уставок внутри диапазонов +2…+8 и +15…+25.</figcaption>
           <p class="mode-note" id="mode-note"></p>
-        </div>
+        </figure>
       </div>
     </div>
   </section>
