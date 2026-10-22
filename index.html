@@ -281,6 +281,11 @@
               </div>
             </li>
           </ol>
+          <div class="request-contacts reveal">
+            <a href="tel:+79035795851">+7&nbsp;903&nbsp;579-58-51</a>
+            <a href="mailto:info@olslogistic.ru">info@olslogistic.ru</a>
+            <p>Заявки принимаем с 10:00 до 19:00.</p>
+          </div>
         </div>
 
         <div class="form-card reveal">
@@ -368,19 +373,24 @@
                 <textarea id="f-comment" name="comment" maxlength="1000" placeholder="Особые требования к грузу и документам"></textarea>
                 <p class="err"></p>
               </div>
+              <div class="field wide">
+                <label class="check consent"><input id="f-consent" name="consent" type="checkbox" required> Соглашаюсь на обработку имени, телефона и почты ООО «ОЛС» (ИНН 9728148168) для подготовки расчёта.</label>
+                <p class="err"></p>
+              </div>
             </div>
             <div class="form-foot">
-              <button class="btn navy" id="f-submit" type="submit">Собрать заявку</button>
-              <p class="hint">Телефон и почта компании в описании не указаны, поэтому форма не отправляет письмо. Она собирает текст, который можно скопировать.</p>
+              <button class="btn navy" id="f-submit" type="submit">Отправить заявку</button>
+              <p class="hint">Письмо откроется на info@olslogistic.ru. Если почтовая программа не запустится, текст можно скопировать и отправить вручную.</p>
             </div>
           </form>
 
           <div class="ready" id="request-ready" hidden>
-            <h3 tabindex="-1">Текст заявки готов</h3>
-            <p>Сообщение никуда не ушло: в материалах ООО «ОЛС» нет телефона и почты для автоматической отправки. Скопируйте текст и передайте его в компанию.</p>
+            <h3 tabindex="-1">Письмо подготовлено</h3>
+            <p>Адресат — <a href="mailto:info@olslogistic.ru">info@olslogistic.ru</a>. Если окно почты не открылось, скопируйте текст и отправьте его на этот адрес или позвоните <a href="tel:+79035795851">+7&nbsp;903&nbsp;579-58-51</a>. Отвечаем с 10:00 до 19:00.</p>
             <pre id="request-text"></pre>
             <div class="ready-actions">
-              <button class="btn navy" id="copy-request" type="button">Скопировать текст</button>
+              <a class="btn navy" id="open-mail" href="mailto:info@olslogistic.ru">Открыть письмо</a>
+              <button class="btn line" id="copy-request" type="button">Скопировать текст</button>
               <button class="btn line" id="request-again" type="button">Собрать другую</button>
             </div>
           </div>
@@ -393,9 +403,13 @@
 <footer class="footer">
   <div class="wrap">
     <img src="assets/logo-word.png" alt="ОЛС" width="1490" height="368">
-    <div>
+    <div class="footer-contacts">
       <strong>ООО «ОЛС»</strong>
-      <p>Перевозки фармацевтической продукции с контролем температуры. Москва, Московская область и вся Россия.</p>
+      <p><a href="tel:+79035795851">+7&nbsp;903&nbsp;579-58-51</a></p>
+      <p><a href="mailto:info@olslogistic.ru">info@olslogistic.ru</a></p>
+      <p>Заявки принимаем с 10:00 до 19:00.</p>
+      <p>123112, город Москва, вн.тер.г. муниципальный округ Пресненский, наб. Пресненская, д.&nbsp;6, стр.&nbsp;2, помещ.&nbsp;48/36.</p>
+      <p>ИНН 9728148168 · ОГРН 1257700013240</p>
     </div>
     <nav aria-label="Разделы в подвале">
       <a href="#routes">Направления</a>

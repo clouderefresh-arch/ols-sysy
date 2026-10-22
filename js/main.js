@@ -119,6 +119,7 @@
     check($("f-phone"), phone.length >= 10 && phone.length <= 15 ? "" : "Нужен телефон: от 10 цифр.");
     var email = $("f-email").value.trim();
     check($("f-email"), !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? "" : "Проверьте написание почты.");
+    check($("f-consent"), $("f-consent").checked ? "" : "Нужно согласие на обработку данных для расчёта.");
     if (first) first.focus();
     return ok;
   }
@@ -142,7 +143,9 @@
   $("f-amount").addEventListener("input", volumeNote);
   $("f-unit").addEventListener("change", volumeNote);
 
-  ["f-geo", "f-from", "f-to", "f-cargo", "f-amount", "f-mode", "f-name", "f-phone", "f-email"].forEach(function (id) {
+  var companyMail = "info@olslogistic.ru";
+
+  ["f-geo", "f-from", "f-to", "f-cargo", "f-amount", "f-mode", "f-name", "f-phone", "f-email", "f-consent"].forEach(function (id) {
     $(id).addEventListener("blur", function () {
       if (form.dataset.tried === "1") validate();
     });
@@ -160,6 +163,12 @@
   };
 
   function line(label, value) { return label + ": " + value; }
+
+  function mailHref(text) {
+    return "mailto:" + companyMail
+      + "?subject=" + encodeURIComponent("Заявка на расчёт перевозки")
+      + "&body=" + encodeURIComponent(text);
+  }
 
   function buildText() {
     var unit = $("f-unit").value === "t" ? "т" : "кг";
@@ -190,11 +199,19 @@
       summary.textContent = "Проверьте поля, отмеченные как обязательные.";
       return;
     }
-    output.textContent = buildText();
+    var text = buildText();
+    output.textContent = text;
+    var href = mailHref(text);
+    $("open-mail").setAttribute("href", href);
     form.hidden = true;
     ready.hidden = false;
     copyBtn.textContent = "Скопировать текст";
     ready.querySelector("h3").focus();
+    var opener = doc.createElement("a");
+    opener.href = href;
+    doc.body.appendChild(opener);
+    opener.click();
+    opener.remove();
   });
 
   copyBtn.addEventListener("click", function () {

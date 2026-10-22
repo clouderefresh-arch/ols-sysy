@@ -852,6 +852,28 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 
 .form-summary { color: var(--red-deep); font-weight: 700; }
 
+.request-contacts {
+  display: grid;
+  gap: 6px;
+  margin-top: 28px;
+}
+
+.request-contacts a {
+  color: var(--blue-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.request-contacts p { color: var(--muted); }
+
+.consent {
+  align-items: flex-start;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.consent input { margin-top: 4px; flex: none; }
+
 .ready {
   display: flex;
   flex-direction: column;
@@ -891,8 +913,19 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   gap: 18px 32px;
-  align-items: center;
+  align-items: start;
 }
+
+.footer-contacts {
+  display: grid;
+  gap: 6px;
+}
+
+.footer-contacts p { margin: 0; }
+
+.footer-contacts a { text-decoration: none; }
+
+.footer-contacts a:hover { color: var(--blue); }
 
 .footer nav { grid-column: 1 / -1; width: 100%; }
 
