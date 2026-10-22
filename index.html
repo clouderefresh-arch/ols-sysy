@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ОЛС — перевозка фармацевтической продукции с температурным режимом</title>
-<meta name="description" content="ООО «ОЛС» перевозит фармацевтическую продукцию по Москве, Московской области и России. Контроль температуры от +2 до +25 °C, мультитемпературные рефрижераторы, ЭТрН.">
+<meta name="description" content="ООО «ОЛС» перевозит фармацевтическую продукцию по Москве, Московской области и России. Контроль температуры, мультитемпературные рефрижераторы и электронные документы.">
 <meta name="theme-color" content="#07070b">
 <link rel="icon" href="assets/logo-word.png">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/reefer.css">
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <a class="skip" href="#main">К содержанию</a>
@@ -21,9 +22,10 @@
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
     <nav class="nav" id="site-nav" aria-label="Разделы">
       <a href="#routes">Направления</a>
-      <a href="#modes">Режимы</a>
-      <a href="#docs">Документы</a>
-      <a href="#request">Расчёт</a>
+      <a href="#advantages">Преимущества</a>
+      <a href="#modes">Температура</a>
+      <a href="#flow">Как работаем</a>
+      <a href="#request">Заявка</a>
       <a class="btn" href="#request">Запросить расчёт</a>
     </nav>
   </div>
@@ -31,80 +33,146 @@
 
 <main id="main">
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <p class="ghost-type" aria-hidden="true">+2 +25</p>
     <div class="streaks" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Фармацевтическая логистика</p>
         <h1 id="hero-title">Температурный режим<br><span class="grad">на всех этапах перевозки</span></h1>
-        <p class="lede">ООО «ОЛС» организует перевозки фармацевтической продукции, где критичны сроки, точность и сохранение свойств груза. Берём на себя режим, оперативность доставки и оформление документов, включая ЭТрН.</p>
+        <p class="lede">ООО «ОЛС» организует перевозки фармацевтической продукции, где критичны сроки, точность и сохранение свойств груза. Берём на себя режим, оперативность доставки и оформление документов.</p>
         <div class="hero-actions">
           <a class="btn" href="#request">Запросить расчёт</a>
           <a class="btn ghost" href="#routes">Направления</a>
         </div>
       </div>
-      <dl class="stats">
-        <div>
-          <dt>+2…+25&nbsp;°C</dt>
-          <dd>поддерживаемый диапазон</dd>
-        </div>
-        <div>
-          <dt>500&nbsp;кг — 20&nbsp;т</dt>
-          <dd>партия на рейс</dd>
-        </div>
-        <div>
-          <dt>от 1&nbsp;мин</dt>
-          <dd>шаг записи температуры</dd>
-        </div>
-        <div>
-          <dt>до 5&nbsp;лет</dt>
-          <dd>возраст собственного транспорта</dd>
-        </div>
-      </dl>
     </div>
   </section>
-
-  <div class="spec" aria-label="Коротко о возможностях">
-    <div class="wrap">
-      <span>Москва и область</span>
-      <span>Россия</span>
-      <span>+2…+8&nbsp;°C</span>
-      <span>+15…+25&nbsp;°C</span>
-      <span>два режима в одной машине</span>
-      <span>ЭТрН</span>
-    </div>
-  </div>
 
   <section class="section" id="routes" aria-labelledby="routes-title">
     <div class="wrap">
       <div class="section-head">
-        <div>
+        <div class="reveal">
           <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Направления</p>
-          <h2 id="routes-title">Что берём на себя</h2>
+          <h2 id="routes-title">Основные направления работы</h2>
         </div>
-        <p class="lede">Локальные рейсы и перевозки по стране. Погрузку, разгрузку и страховку груза подключаем, когда они нужны заказу. Тариф собирается под конкретную задачу, а не из общего прайса.</p>
+        <p class="lede reveal" style="--d:1">Локальные рейсы и перевозки по стране, погрузо-разгрузочные работы, страховка груза и тариф, который собирается под задачу клиента.</p>
       </div>
       <div class="cards">
-        <a class="card" href="#request" data-geo="mo">
+        <a class="card reveal" style="--d:1" href="#request" data-geo="mo">
           <span class="idx"><span class="mark" aria-hidden="true"></span>01</span>
-          <h3>Москва и Московская область</h3>
-          <p>Локальные перевозки от 500&nbsp;кг до 20&nbsp;т.</p>
+          <h3>Локальные перевозки</h3>
+          <p>Москва и Московская область — от 500&nbsp;кг до 20&nbsp;т.</p>
         </a>
-        <a class="card" href="#request" data-geo="rf">
+        <a class="card reveal" style="--d:2" href="#request" data-geo="rf">
           <span class="idx"><span class="mark" aria-hidden="true"></span>02</span>
-          <h3>По России</h3>
-          <p>Перевозки по территории Российской Федерации, тот же диапазон партии.</p>
+          <h3>Перевозки по России</h3>
+          <p>По территории Российской Федерации — от 500&nbsp;кг до 20&nbsp;т.</p>
         </a>
-        <a class="card" href="#request" data-extra="prr">
+        <a class="card reveal" style="--d:3" href="#request" data-extra="prr">
           <span class="idx"><span class="mark" aria-hidden="true"></span>03</span>
-          <h3>Погрузка и разгрузка</h3>
-          <p>Опция к рейсу, если груз нужно принять или сдать силами перевозчика.</p>
+          <h3>Погрузо-разгрузочные работы</h3>
+          <p>Выполняем опционально, если груз нужно принять или сдать нашими силами.</p>
         </a>
-        <a class="card invert" href="#request" data-extra="ins">
+        <a class="card reveal" style="--d:4" href="#request" data-extra="ins">
           <span class="idx"><span class="mark" aria-hidden="true"></span>04</span>
-          <h3>Страхование груза</h3>
-          <p>Оформляем по запросу, вместе с коммерческим расчётом.</p>
+          <h3>Страховка груза</h3>
+          <p>Оформляем страховку груза вместе с коммерческим расчётом.</p>
         </a>
+        <a class="card invert reveal" style="--d:5" href="#request">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>05</span>
+          <h3>Гибкая система тарифов</h3>
+          <p>Тариф формируется под конкретные потребности клиента.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section advantages" id="advantages" aria-labelledby="advantages-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="reveal">
+          <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Преимущества</p>
+          <h2 id="advantages-title">Наши конкурентные преимущества</h2>
+        </div>
+        <p class="lede reveal" style="--d:1">Качество, собственный транспорт, документы и санитарная подготовка рейса. Числовые режимы собраны в блоке о температуре.</p>
+      </div>
+      <div class="adv-grid">
+        <article class="adv reveal" style="--d:1">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>01</span>
+          <h3>Контроль качества</h3>
+          <p>Действующая система менеджмента качества обеспечивает контроль на всех этапах перевозки.</p>
+        </article>
+        <article class="adv reveal" style="--d:2">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>02</span>
+          <h3>Современный автопарк</h3>
+          <p>Собственный транспорт с мультитемпературными рефрижераторами, возрастом до 5 лет. Штатные опытные водители проходят инструктаж для работы с фармацевтическими грузами.</p>
+        </article>
+        <article class="adv reveal" style="--d:3">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>03</span>
+          <h3>Цифровизация процессов</h3>
+          <p>Внедрили ЭТрН и готовы к полному электронному взаимодействию: скорость, прозрачность и юридическая значимость документооборота.</p>
+        </article>
+        <article class="adv reveal" style="--d:4">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>04</span>
+          <h3>Широкий температурный диапазон</h3>
+          <p>Поддерживаем режим, нужный для широкой номенклатуры фармацевтических товаров.</p>
+        </article>
+        <article class="adv reveal" style="--d:5">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>05</span>
+          <h3>Мониторинг температуры</h3>
+          <p>Шаг записи данных — от 1 минуты. По запросу предоставляем распечатанный температурный чек.</p>
+        </article>
+        <article class="adv reveal" style="--d:6">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>06</span>
+          <h3>Документальное подтверждение</h3>
+          <p>На температурные регистраторы есть свидетельства о поверке и калибровке. Они подтверждают точность измерений.</p>
+        </article>
+        <article class="adv reveal" style="--d:7">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>07</span>
+          <h3>Надёжность транспорта</h3>
+          <p>Автомобили проходят своевременное техническое обслуживание.</p>
+        </article>
+        <article class="adv reveal" style="--d:8">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>08</span>
+          <h3>Санитарная безопасность</h3>
+          <p>Обязательная санитарная обработка кузова перед рейсом.</p>
+        </article>
+        <article class="adv reveal" style="--d:9">
+          <span class="idx"><span class="mark" aria-hidden="true"></span>09</span>
+          <h3>Квалифицированные режимы</h3>
+          <p>Транспорт квалифицирован для установленных режимов перевозки. Это закрывает особые требования к продукции.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section clients" id="clients" aria-labelledby="clients-title">
+    <div class="wrap">
+      <div class="section-head clients-head">
+        <div class="reveal">
+          <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Клиенты</p>
+          <h2 id="clients-title">Нам доверяют</h2>
+        </div>
+        <p class="lede reveal" style="--d:1">Компании, с которыми работает ОЛС.</p>
+      </div>
+    </div>
+    <div class="marquee" aria-label="Логотипы компаний">
+      <div class="marquee-track">
+        <ul class="logo-row">
+          <li><img src="assets/clients/lancet.png" alt="LANCET" width="179" height="45"></li>
+          <li><img src="assets/clients/irvin.png" alt="Ирвин" width="138" height="60"></li>
+          <li><img src="assets/clients/irvin-2.png" alt="Ирвин 2" width="152" height="42"></li>
+          <li><img src="assets/clients/geropharm.png" alt="Герофарм" width="228" height="30"></li>
+          <li><img src="assets/clients/pharmkompleks.png" alt="ФармКомплекс" width="290" height="82"></li>
+          <li><img src="assets/clients/tdbf.png" alt="Торговый дом БФ" width="222" height="50"></li>
+        </ul>
+        <ul class="logo-row" aria-hidden="true">
+          <li><img src="assets/clients/lancet.png" alt="" width="179" height="45"></li>
+          <li><img src="assets/clients/irvin.png" alt="" width="138" height="60"></li>
+          <li><img src="assets/clients/irvin-2.png" alt="" width="152" height="42"></li>
+          <li><img src="assets/clients/geropharm.png" alt="" width="228" height="30"></li>
+          <li><img src="assets/clients/pharmkompleks.png" alt="" width="290" height="82"></li>
+          <li><img src="assets/clients/tdbf.png" alt="" width="222" height="50"></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -112,8 +180,8 @@
   <section class="section modes" id="modes" aria-labelledby="modes-title">
     <div class="wrap">
       <div class="modes-grid">
-        <div>
-          <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Режимы</p>
+        <div class="reveal">
+          <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Температура</p>
           <h2 id="modes-title">Два квалифицированных режима в одном кузове</h2>
           <p class="lede">Собственные мультитемпературные рефрижераторы квалифицированы для +2…+8&nbsp;°C и +15…+25&nbsp;°C. Оба режима можно держать в одной машине. Для остальной номенклатуры доступен диапазон от +2&nbsp;°C до +25&nbsp;°C.</p>
           <div class="mode-list" role="group" aria-label="Температурный режим для заявки">
@@ -162,78 +230,43 @@
     </div>
   </section>
 
-  <section class="section docs" id="docs" aria-labelledby="docs-title">
+  <section class="section flow" id="flow" aria-labelledby="flow-title">
     <div class="wrap">
       <div class="section-head">
-        <div>
-          <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Документы</p>
-          <h2 id="docs-title">Чем подтверждается рейс</h2>
+        <div class="reveal">
+          <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Процесс</p>
+          <h2 id="flow-title">От заявки до доставки</h2>
         </div>
-        <p class="lede">Температура измеряется приборами со свидетельствами о поверке и калибровке. Запись идёт с шагом от одной минуты, чек можно распечатать. Документы рейса ведём электронно.</p>
+        <p class="lede reveal" style="--d:1">Пять шагов, на которых ОЛС ведёт заказ: от исходных данных до передачи груза.</p>
       </div>
-      <div class="doc-grid">
-        <article class="doc">
-          <div class="specimen">
-            <b>Температурный чек</b>
-            <ol>
-              <li>Шаг записи — от 1 минуты</li>
-              <li>Распечатка по запросу</li>
-              <li>Это схема документа, не журнал рейса</li>
-            </ol>
-          </div>
-          <div class="doc-body">
-            <h3>Контроль температуры</h3>
-            <p>Мониторинг на перевозке и печатный чек, если он нужен к комплекту документов.</p>
-          </div>
-        </article>
-        <article class="doc">
-          <div class="specimen">
-            <b>Поверка</b>
-            <ol>
-              <li>Свидетельство о поверке</li>
-              <li>Свидетельство о калибровке</li>
-              <li>Точность измерений подтверждена</li>
-            </ol>
-          </div>
-          <div class="doc-body">
-            <h3>Регистраторы</h3>
-            <p>На температурные регистраторы есть свидетельства о поверке и калибровке.</p>
-          </div>
-        </article>
-        <article class="doc">
-          <div class="specimen">
-            <b>ЭТрН</b>
-            <ol>
-              <li>Электронная накладная</li>
-              <li>Электронный документооборот</li>
-              <li>Юридическая значимость</li>
-            </ol>
-          </div>
-          <div class="doc-body">
-            <h3>Электронные документы</h3>
-            <p>ЭТрН уже внедрена. Компания готова к полному электронному взаимодействию.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="reasons">
-        <article>
-          <h3>Система качества</h3>
-          <p>Действующая СМК контролирует перевозку на всех этапах, а не только на погрузке.</p>
-        </article>
-        <article>
-          <h3>Водители</h3>
-          <p>Штатные водители проходят инструктаж для работы с фармацевтическими грузами.</p>
-        </article>
-        <article>
-          <h3>Техническое состояние</h3>
-          <p>Собственный транспорт обслуживается в срок. Возраст машин — до пяти лет.</p>
-        </article>
-        <article>
-          <h3>Санобработка</h3>
-          <p>Кузов проходит обязательную санитарную обработку.</p>
-        </article>
-      </div>
+      <div class="flow-line" aria-hidden="true"><span></span></div>
+      <ol class="flow-steps">
+        <li class="reveal" style="--d:1">
+          <span class="flow-num">01</span>
+          <h3>Заявка</h3>
+          <p>Передаёте груз, маршрут, срок и нужные дополнительные услуги.</p>
+        </li>
+        <li class="reveal" style="--d:2">
+          <span class="flow-num">02</span>
+          <h3>Расчёт</h3>
+          <p>Готовим коммерческое предложение под конкретный заказ.</p>
+        </li>
+        <li class="reveal" style="--d:3">
+          <span class="flow-num">03</span>
+          <h3>Согласование</h3>
+          <p>Фиксируем условия, документы и состав работ по рейсу.</p>
+        </li>
+        <li class="reveal" style="--d:4">
+          <span class="flow-num">04</span>
+          <h3>Подготовка</h3>
+          <p>Назначаем машину и водителя, обрабатываем кузов и задаём режим.</p>
+        </li>
+        <li class="reveal" style="--d:5">
+          <span class="flow-num">05</span>
+          <h3>Доставка</h3>
+          <p>Везём груз и передаём его вместе с комплектом документов.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -241,10 +274,10 @@
     <div class="wrap">
       <div class="request-grid">
         <div>
-          <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Стоимость</p>
-          <h2 id="request-title">Расчёт под конкретный заказ</h2>
-          <p class="lede">Цена не опубликована прайсом: она зависит от груза, маршрута, срока и дополнительных услуг. Коммерческое предложение готовится сразу после исходных данных.</p>
-          <ol class="factors">
+          <p class="eyebrow reveal"><span class="mark" aria-hidden="true"></span> Стоимость</p>
+          <h2 class="reveal" id="request-title" style="--d:1">Расчёт под конкретный заказ</h2>
+          <p class="lede reveal" style="--d:2">Цена не опубликована прайсом: она зависит от груза, маршрута, срока и дополнительных услуг. Коммерческое предложение готовится сразу после исходных данных.</p>
+          <ol class="factors reveal" style="--d:3">
             <li>
               <span class="idx">01</span>
               <div>
@@ -277,7 +310,7 @@
           <p class="quote">Задача ОЛС — решение, которое повышает эффективность логистики и позволяет оптимизировать расходы.</p>
         </div>
 
-        <div class="form-card">
+        <div class="form-card reveal" style="--d:2">
           <form class="form" id="request-form" novalidate>
             <p class="form-summary" id="form-summary" role="alert"></p>
             <div class="form-grid">
@@ -393,9 +426,11 @@
     </div>
     <nav aria-label="Разделы в подвале">
       <a href="#routes">Направления</a>
-      <a href="#modes">Режимы</a>
-      <a href="#docs">Документы</a>
-      <a href="#request">Расчёт</a>
+      <a href="#advantages">Преимущества</a>
+      <a href="#clients">Клиенты</a>
+      <a href="#modes">Температура</a>
+      <a href="#flow">Как работаем</a>
+      <a href="#request">Заявка</a>
     </nav>
   </div>
 </footer>
