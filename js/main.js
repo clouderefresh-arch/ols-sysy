@@ -21,33 +21,7 @@
     if (e.target.closest("a")) closeNav();
   });
 
-  var scrollFrame = 0;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function cancelScroll() {
-    if (scrollFrame) cancelAnimationFrame(scrollFrame);
-    scrollFrame = 0;
-  }
-
-  function scrollToEl(el) {
-    var top = el.getBoundingClientRect().top + window.pageYOffset - 84;
-    if (reduceMotion) {
-      window.scrollTo(0, top);
-      return;
-    }
-    var start = window.pageYOffset;
-    var dist = top - start;
-    var duration = Math.min(480, Math.max(240, Math.abs(dist) * 0.22));
-    var t0 = performance.now();
-    cancelScroll();
-    function step(now) {
-      var p = Math.min(1, (now - t0) / duration);
-      var eased = 1 - Math.pow(1 - p, 3);
-      window.scrollTo(0, start + dist * eased);
-      scrollFrame = p < 1 ? requestAnimationFrame(step) : 0;
-    }
-    scrollFrame = requestAnimationFrame(step);
-  }
 
   doc.addEventListener("click", function (e) {
     var link = e.target.closest('a[href^="#"]');
@@ -57,11 +31,8 @@
     if (!target) return;
     e.preventDefault();
     if (history.pushState) history.pushState(null, "", "#" + id);
-    scrollToEl(target);
+    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   });
-
-  window.addEventListener("wheel", cancelScroll, { passive: true });
-  window.addEventListener("touchstart", cancelScroll, { passive: true });
 
   var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
   var sections = links.map(function (a) {
@@ -298,4 +269,29 @@
 
   paintMode("");
   volumeNote();
+
+  var revealEls = doc.querySelectorAll(".reveal");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    revealEls.forEach(function (el) { el.classList.add("is-in"); });
+  } else {
+    var revealIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        revealIo.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach(function (el) { revealIo.observe(el); });
+  }
+
+  var reefer = doc.querySelector(".reefer");
+  if (reefer && !reduceMotion && "IntersectionObserver" in window) {
+    reefer.classList.add("is-gated");
+    var reeferIo = new IntersectionObserver(function (entries) {
+      reefer.classList.toggle("is-playing", entries.some(function (entry) {
+        return entry.isIntersecting;
+      }));
+    }, { rootMargin: "160px" });
+    reeferIo.observe(reefer);
+  }
 })();
