@@ -22,6 +22,11 @@
   });
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var heroVideo = doc.querySelector(".hero-media video");
+  if (heroVideo && reduceMotion) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.pause();
+  }
 
   doc.addEventListener("click", function (e) {
     var link = e.target.closest('a[href^="#"]');

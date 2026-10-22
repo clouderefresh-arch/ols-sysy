@@ -33,7 +33,12 @@
 
 <main id="main">
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="streaks" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="hero-media" aria-hidden="true">
+      <video autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow"><span class="mark" aria-hidden="true"></span> Фармацевтическая логистика</p>
@@ -165,6 +170,7 @@
             <button class="chip" type="button" data-mode="dual">Оба режима</button>
             <button class="chip" type="button" data-mode="range">+2…+25&nbsp;°C</button>
           </div>
+          <p class="mode-note" id="mode-note"></p>
         </div>
         <figure class="reefer">
           <div class="reefer__stage" aria-hidden="true">
@@ -199,7 +205,6 @@
             <svg class="reefer__icon reefer__icon--pulse" viewBox="0 0 24 24"><path d="M2.5 12h4l2-5 3.2 10 2.2-5H21.5"/><circle cx="12" cy="12" r="9.2"/></svg>
           </div>
           <figcaption>Перегородка за пять секунд уходит и возвращается в ту же точку. +5&nbsp;°C и +20&nbsp;°C — пример уставок внутри диапазонов +2…+8 и +15…+25.</figcaption>
-          <p class="mode-note" id="mode-note"></p>
         </figure>
       </div>
     </div>

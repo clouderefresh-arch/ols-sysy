@@ -263,10 +263,34 @@ h3 { font-size: 1.15rem; font-weight: 500; }
   min-height: calc(100svh - var(--header));
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #ffffff 0%, #e5eef8 68%, #f3f6fb 100%);
+  background: #d7e4f2;
   color: var(--ink);
   overflow: hidden;
   padding-top: 28px;
+}
+
+.hero-media,
+.hero-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media { z-index: 0; }
+
+.hero-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+}
+
+.hero-shade {
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(244, 247, 251, 0.2) 0%, rgba(244, 247, 251, 0.05) 52%, #f3f6fb 100%),
+    linear-gradient(100deg, rgba(244, 247, 251, 0.94) 0%, rgba(244, 247, 251, 0.82) 34%, rgba(244, 247, 251, 0.34) 62%, rgba(244, 247, 251, 0.08) 100%);
 }
 
 .hero .wrap {
@@ -929,7 +953,11 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 
 @media (max-width: 760px) {
   h1 { font-size: 2.15rem; }
-  .hero { padding-top: 8px; }
+  .hero { padding-top: 8px; min-height: min(78svh, 640px); }
+  .hero-shade {
+    background:
+      linear-gradient(180deg, rgba(244, 247, 251, 0.78) 0%, rgba(244, 247, 251, 0.7) 62%, #f3f6fb 100%);
+  }
   .hero-copy { padding-top: 0; }
   .hero .lede { margin-top: 14px; font-size: 1rem; }
   .hero-actions { margin-top: 18px; }
@@ -957,7 +985,6 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   .card, .adv, .flow-steps li { min-height: 0; }
   .card:nth-child(5),
   .adv:nth-child(5) { grid-column: auto; }
-  .hero { min-height: auto; }
   .hero h1 { max-width: none; }
   .flow-line { display: none; }
 }
@@ -971,6 +998,8 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero-media video { display: none; }
+  .hero-media { background: url("../assets/hero-poster.jpg") center 42% / cover no-repeat; }
   .js .reveal,
   .js .reveal.is-in { transform: none; transition: none; }
   .marquee-track,
