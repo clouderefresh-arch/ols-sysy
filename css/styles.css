@@ -193,7 +193,7 @@ h3 { font-size: 1.15rem; font-weight: 500; }
   align-items: center;
   justify-content: flex-end;
   flex: 1;
-  gap: 40px;
+  gap: 20px;
   min-width: 0;
 }
 
