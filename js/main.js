@@ -59,40 +59,6 @@
     sections.forEach(function (section) { io.observe(section); });
   }
 
-  var modeInput = $("f-mode");
-  var chambers = doc.querySelectorAll(".chamber");
-  var modeNote = $("mode-note");
-  var chips = doc.querySelectorAll(".chip");
-  var notes = {
-    "": "Оба режима квалифицированы. Выберите, что нужно в конкретном рейсе.",
-    "2-8": "В рейсе задан режим +2…+8 °C. Вторая камера в этой заявке не используется.",
-    "15-25": "В рейсе задан режим +15…+25 °C. Первая камера в этой заявке не используется.",
-    "dual": "Оба квалифицированных режима в одной машине: кузов разделён перегородкой.",
-    "range": "Нужен другой режим внутри диапазона +2…+25 °C. Его уточним в расчёте."
-  };
-
-  function paintMode(value) {
-    chambers.forEach(function (chamber) {
-      var id = chamber.getAttribute("data-chamber");
-      chamber.classList.remove("is-on", "is-off");
-      if (!value || value === "range") return;
-      if (value === "dual" || value === id) chamber.classList.add("is-on");
-      else chamber.classList.add("is-off");
-    });
-    modeNote.textContent = notes[value] || notes[""];
-    chips.forEach(function (chip) {
-      chip.setAttribute("aria-pressed", chip.getAttribute("data-mode") === value ? "true" : "false");
-    });
-    if (modeInput.value !== value) modeInput.value = value;
-  }
-
-  chips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      paintMode(chip.getAttribute("data-mode"));
-    });
-  });
-  modeInput.addEventListener("change", function () { paintMode(modeInput.value); });
-
   var form = $("request-form");
   var ready = $("request-ready");
   var summary = $("form-summary");
@@ -266,13 +232,11 @@
     form.querySelectorAll("[aria-invalid]").forEach(function (el) {
       el.removeAttribute("aria-invalid");
     });
-    paintMode("");
     volumeNote();
     showForm();
     $("f-from").focus();
   });
 
-  paintMode("");
   volumeNote();
 
   var revealEls = doc.querySelectorAll(".reveal");
