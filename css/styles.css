@@ -214,6 +214,14 @@ h3 { font-size: 1.15rem; font-weight: 500; }
 
 .nav a.btn { color: #fff; }
 
+.btn.call {
+  flex: none;
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn.call:hover { background: var(--blue-ink); color: #fff; }
+
 .nav-toggle {
   display: none;
   margin-left: auto;
@@ -956,8 +964,11 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
 
 .footer nav a:hover { color: var(--ink); }
 
-@media (max-width: 1040px) {
-  .nav-toggle { display: inline-flex; }
+@media (max-width: 1240px) {
+  .header .logo { order: 1; }
+  .btn.call { order: 2; margin-left: auto; }
+  .nav-toggle { display: inline-flex; order: 3; margin-left: 0; }
+  .nav { order: 4; }
   .nav {
     display: none;
     position: absolute;
@@ -1045,8 +1056,10 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   .hero-actions .btn { width: 100%; }
   .section-head { gap: 16px; margin-bottom: 28px; }
   .stats { padding-top: 16px; gap: 14px 12px; }
-  .logo { width: 132px; }
-  .nav-toggle { display: inline-flex; min-height: 44px; padding: 8px 16px; }
+  .header .wrap { gap: 8px; }
+  .logo { width: 108px; }
+  .btn.call { padding: 0 10px; min-height: 40px; font-size: 14px; }
+  .nav-toggle { display: inline-flex; min-height: 44px; padding: 8px 12px; }
   .nav {
     display: none;
     position: absolute;
