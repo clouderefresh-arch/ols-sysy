@@ -21,6 +21,48 @@
     if (e.target.closest("a")) closeNav();
   });
 
+  var scrollFrame = 0;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function cancelScroll() {
+    if (scrollFrame) cancelAnimationFrame(scrollFrame);
+    scrollFrame = 0;
+  }
+
+  function scrollToEl(el) {
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 84;
+    if (reduceMotion) {
+      window.scrollTo(0, top);
+      return;
+    }
+    var start = window.pageYOffset;
+    var dist = top - start;
+    var duration = Math.min(480, Math.max(240, Math.abs(dist) * 0.22));
+    var t0 = performance.now();
+    cancelScroll();
+    function step(now) {
+      var p = Math.min(1, (now - t0) / duration);
+      var eased = 1 - Math.pow(1 - p, 3);
+      window.scrollTo(0, start + dist * eased);
+      scrollFrame = p < 1 ? requestAnimationFrame(step) : 0;
+    }
+    scrollFrame = requestAnimationFrame(step);
+  }
+
+  doc.addEventListener("click", function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var id = link.getAttribute("href").slice(1);
+    var target = id && doc.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    if (history.pushState) history.pushState(null, "", "#" + id);
+    scrollToEl(target);
+  });
+
+  window.addEventListener("wheel", cancelScroll, { passive: true });
+  window.addEventListener("touchstart", cancelScroll, { passive: true });
+
   var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
   var sections = links.map(function (a) {
     return doc.querySelector(a.getAttribute("href"));

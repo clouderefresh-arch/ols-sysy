@@ -67,7 +67,7 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+html { scroll-behavior: auto; scroll-padding-top: 84px; }
 
 body {
   margin: 0;
@@ -156,9 +156,8 @@ h3 { font-size: 1.15rem; font-weight: 500; }
   height: var(--header);
   display: flex;
   align-items: center;
-  background: rgba(7, 7, 11, 0.92);
+  background: #07070b;
   border-bottom: 1px solid var(--line-dark);
-  backdrop-filter: blur(14px);
 }
 
 .header .wrap {
@@ -935,8 +934,22 @@ input:focus, select:focus, textarea:focus { border-color: var(--blue); }
   .flow-line { display: none; }
 }
 
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: settle linear both;
+    animation-timeline: view();
+    animation-range: entry 0px entry 140px;
+  }
+}
+
+@keyframes settle {
+  from { transform: translateY(18px); }
+  to { transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .reveal { animation: none; transform: none; }
   .marquee-track,
   .flow-line span { animation: none; }
   .marquee { mask-image: none; }
