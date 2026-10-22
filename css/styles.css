@@ -495,7 +495,10 @@ h3 { font-size: 1.15rem; font-weight: 500; }
 
 /* advantages */
 
-.advantages { background: linear-gradient(180deg, #eef3f9 0%, #f8f6f8 58%, #f6f1f3 100%); }
+.advantages {
+  padding-bottom: clamp(16px, 2vw, 28px);
+  background: linear-gradient(180deg, #eef3f9 0%, #f8f6f8 58%, #f6f1f3 100%);
+}
 
 .adv-grid {
   display: grid;
@@ -530,6 +533,7 @@ h3 { font-size: 1.15rem; font-weight: 500; }
 /* clients */
 
 .clients {
+  padding-top: clamp(8px, 1.2vw, 16px);
   overflow: hidden;
   background: linear-gradient(180deg, #f6f1f3 0%, #ffffff 42%, #eef2f8 100%);
 }
