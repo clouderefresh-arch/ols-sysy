@@ -256,19 +256,4 @@
 
   paintMode("");
   volumeNote();
-
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var revealEls = doc.querySelectorAll(".reveal");
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    revealEls.forEach(function (el) { el.classList.add("is-in"); });
-  } else {
-    var revealIo = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-in");
-        revealIo.unobserve(entry.target);
-      });
-    }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
-    revealEls.forEach(function (el) { revealIo.observe(el); });
-  }
 })();
